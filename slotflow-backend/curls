@@ -1,0 +1,134 @@
+# Register Admin
+curl -X POST http://localhost:8000/api/auth/register/ \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin1", "email": "admin@slotflow.com", "password": "Admin@1234", "password2": "Admin@1234", "role": "admin"}' | jq
+
+# Register Learner
+curl -X POST http://localhost:8000/api/auth/register/ \
+  -H "Content-Type: application/json" \
+  -d '{"username": "learner1", "email": "learner@slotflow.com", "password": "Learner@1234", "password2": "Learner@1234", "role": "learner"}' | jq
+
+# Login (with username or email)
+curl -X POST http://localhost:8000/api/auth/token/ \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin1", "password": "Admin@1234"}' | jq
+
+# Logout (replace REFRESH_TOKEN)
+curl -X POST http://localhost:8000/api/auth/logout/ \
+  -H "Content-Type: application/json" \
+  -d '{"refresh_token": "REFRESH_TOKEN"}' | jq
+
+# Change Password (replace ACCESS_TOKEN)
+curl -X POST http://localhost:8000/api/auth/change-password/ \
+  -H "Authorization: Bearer ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"current_password": "Admin@1234", "new_password": "New@Password123", "new_password_confirmation": "New@Password123"}' | jq
+
+
+# Test logout (replace REFRESH_TOKEN)
+curl -X POST http://localhost:8000/api/auth/logout/ \
+  -H "Authorization: Bearer ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"refresh_token": "REFRESH_TOKEN"}' | jq
+
+
+#🔐 First: Get JWT Token (Admin Example)
+
+curl -X POST http://localhost:8000/api/auth/token/ \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin1", "password": "Admin@1234"}' | jq
+
+
+#👤 Profile Picture Upload (PUT)
+
+curl -X PUT http://localhost:8000/api/auth/me/profile-picture/ \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: multipart/form-data" \
+  -F "profile_picture=@/absolute/path/to/profile.jpg" | jq
+
+# 👤 Profile Picture Delete
+
+curl -X DELETE http://localhost:8000/api/auth/me/profile-picture/ \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" | jq
+
+# 📚 Create Course (with image)
+
+curl -X POST http://localhost:8000/api/courses/ \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: multipart/form-data" \
+  -F "title=Python Basics" \
+  -F "description=Learn Python from scratch" \
+  -F "start_date=2025-07-01" \
+  -F "end_date=2025-08-01" \
+  -F "duration_hours=40" \
+  -F "languages=English"\
+  -F "languages=Zulu" \
+  -F "slots_total=30" \
+  -F "course_picture=@pics/life.jpeg" | jq
+
+#📝 If languages raises an error, try sending it as JSON string:
+
+-F "languages=[\"English\",\"Zulu\"]"
+
+#📚 Update Course (PATCH or PUT)
+
+curl -X PATCH http://localhost:8000/api/courses/1/ \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: multipart/form-data" \
+  -F "description=Updated: Python for beginners" | jq
+
+#🖼️ Upload or Replace Course Picture
+
+curl -X PUT http://localhost:8000/api/courses/1/course-picture/ \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" \
+  -H "Content-Type: multipart/form-data" \
+  -F "course_picture=@pics/life.jpeg" | jq
+
+# ❌ Delete Course Picture
+
+curl -X DELETE http://localhost:8000/api/courses/1/course-picture/ \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" | jq
+
+#📖 Get All Courses
+
+curl -X GET http://localhost:8000/api/courses/ | jq
+
+#📖 Get One Course
+
+curl -X GET http://localhost:8000/api/courses/1/ | jq
+
+# Optional: Delete Course (Soft Delete)
+
+curl -X DELETE http://localhost:8000/api/courses/1/ \
+  -H "Authorization: Bearer <ACCESS_TOKEN>" | jq
+
+ #🧪 Book a Course
+
+curl -X POST http://localhost:8000/api/bookings/ \
+  -H "Authorization: Bearer <LEARNER_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"course": 1}' | jq
+
+✔️ Should create booking, increase slots_booked, and show email logs in console.
+
+# 🧪 View Own Bookings
+
+curl -X GET http://localhost:8000/api/bookings/ \
+  -H "Authorization: Bearer <LEARNER_TOKEN>" | jq
+
+✔️ Should return all bookings (even cancelled ones) for the logged-in learner.
+
+# 🧪 Cancel Booking
+
+curl -X PATCH http://localhost:8000/api/bookings/1/cancel/ \
+  -H "Authorization: Bearer <LEARNER_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"confirm": true}' | jq
+
+✔️ Should:
+
+Set is_cancelled=true
+
+Decrease slots_booked
+
+Send cancellation emails

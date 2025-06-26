@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Booking Cancellation Notification</h2>
+    <p><strong>{{ user.username }}</strong> has cancelled their booking for:</p>
+    <ul>
+        <li><strong>Course:</strong> {{ course.title }}</li>
+        <li><strong>Cancelled on:</strong> {{ cancellation_date|date:"F j, Y" }}</li>
+    </ul>
+    <p>SlotFlow Notifications</p>
+</body>
+</html>

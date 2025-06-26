@@ -1,0 +1,9 @@
+Hello {{ user.username }},
+
+Your booking for the following course has been cancelled:
+Course: {{ course.title }}
+Date of Cancellation: {{ cancellation_date|date:"F j, Y" }}
+
+We hope to see you again soon.
+
+SlotFlow Team
