@@ -1,0 +1,24 @@
+// Color Palette
+$primary: #3F3D56;
+$accent: #5CDB95;
+$neutral: #F9F9F9;
+$secondary: #EDF5E1;
+$text-dark: #1A1A1A;
+$text-muted: #6C757D;
+$error: #FF6B6B;
+$success: #4BB543;
+
+// Bootstrap overrides
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "danger": $error,
+  "warning": #FFC107,
+  "info": #17A2B8,
+  "light": $neutral,
+  "dark": $text-dark
+);
+
+$body-bg: $neutral;
+$body-color: $text-dark;

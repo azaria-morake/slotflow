@@ -182,3 +182,7 @@ slotflow-frontend/
 * API design is modular and easy to expand.
 * No dependency conflicts. Just run `npm install` and go.
 
+## 📄 API Documentation
+
+[Download the PDF](docs/SlotFlow_API_Documentation.pdf)
+
