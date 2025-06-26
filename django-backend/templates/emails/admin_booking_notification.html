@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>New Booking Notification</h2>
+    <p><strong>{{ user.username }}</strong> has booked a spot for:</p>
+    <ul>
+        <li><strong>Course:</strong> {{ course.title }}</li>
+        <li><strong>Date:</strong> {{ booking_date|date:"F j, Y" }}</li>
+    </ul>
+    <p>Please check the dashboard for more info.</p>
+    <p>SlotFlow Notifications</p>
+</body>
+</html>
