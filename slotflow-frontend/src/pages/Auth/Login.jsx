@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Form } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { loginSchema } from '../../utils/validators'
 import { useAuth } from '../../hooks/useAuth'
 import FormInput from '../../components/Common/FormInput'
-import Button from '../../components/Common/Button'
 import api from '../../utils/api'
 import { toast } from 'react-toastify'
 
@@ -64,7 +63,7 @@ const Login = () => {
           placeholder="Enter your password"
         />
         
-        <Button type="submit" variant="accent" className="w-100" isLoading={isLoading}>
+        <Button type="submit" variant="primary" className="w-100" isLoading={isLoading}>
           Login
         </Button>
       </Form>

@@ -31,7 +31,7 @@ const Welcome = () => {
         <Button as={Link} to="/login" variant="primary" size="lg">
           Login
         </Button>
-        <Button as={Link} to="/register" variant="outline-secondary" size="lg">
+        <Button as={Link} to="/register" variant="primary" size="lg">
           Register
         </Button>
       </div>
