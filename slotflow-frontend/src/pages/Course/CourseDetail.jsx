@@ -80,7 +80,7 @@ const CourseDetail = () => {
 
   return (
     <Container className="mt-4">
-      <Button variant="outline-secondary" onClick={() => navigate(-1)} className="mb-3">
+      <Button variant="outline-primary" onClick={() => navigate(-1)} className="mb-3">
         Back
       </Button>
       
@@ -96,7 +96,7 @@ const CourseDetail = () => {
           
           <div className="mb-4">
             {course.languages?.map(lang => (
-              <Badge bg="secondary" className="me-2" key={lang}>
+              <Badge bg="info" className="me-2" key={lang}>
                 {lang}
               </Badge>
             ))}

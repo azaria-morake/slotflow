@@ -1,9 +1,0 @@
-Hello Admin,
-
-{{ user.username }} has successfully booked a spot for:
-Course: {{ course.title }}
-Date: {{ booking_date|date:"F j, Y" }}
-
-Please check the dashboard for more info.
-
-SlotFlow Notifications

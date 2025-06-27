@@ -1,8 +1,0 @@
-Hello {{ user.username }},
-
-You have successfully booked for:
-Course: {{ course.title }}
-Date: {{ booking_date|date:"F j, Y" }}
-
-Thank you!
-SlotFlow Team

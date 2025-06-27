@@ -37,7 +37,7 @@ const CourseCardAdmin = ({ course, onEdit, onDelete }) => {
             Delete
           </Button>
           <Button 
-            variant="outline-secondary" 
+            variant="outline-primary" 
             as={Link} 
             to={`/courses/${course.id}`}
           >

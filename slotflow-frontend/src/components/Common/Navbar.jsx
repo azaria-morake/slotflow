@@ -54,16 +54,16 @@ const CustomNavbar = () => {
               <i className="fas fa-home me-1"></i>
               Home
             </Nav.Link>
-            
+             
             {user?.is_admin && (
               <Nav.Link 
                 as={Link} 
                 to="/dashboard/admin" 
                 className={`nav-link-custom ${isActiveLink('/dashboard/admin') ? 'active' : ''}`}
               >
-                <i className="fas fa-cog me-1"></i>
+                <i className="fas fa-cog me-2"></i>
                 Admin Dashboard
-                <Badge bg="warning" className="ms-1">Admin</Badge>
+                <Badge /*bg="warning" */ className="ms-5">Admin</Badge>
               </Nav.Link>
             )}
             

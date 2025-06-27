@@ -5,7 +5,7 @@
 
 /* Custom Navbar Styling */
 .custom-navbar {
-  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+  background: linear-gradient(135deg, #3F3D56 0%, #3F3D56 100%) !important;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
@@ -17,7 +17,7 @@
 }
 
 /* Brand Logo Styling */
-.brand-logo {
+.brand-logo { 
   font-weight: 700;
   font-size: 1.5rem;
   text-decoration: none;
@@ -104,8 +104,8 @@
 
 .nav-link-custom.active {
   color: #ffd700 !important;
-  background: rgba(255, 215, 0, 0.2);
-  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+ 
+  
 }
 
 .nav-link-custom i {

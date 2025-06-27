@@ -131,7 +131,7 @@ const CourseForm = ({ onSubmit, initialData, isLoading }) => {
       
       <Button 
         type="submit" 
-        variant="accent" 
+        variant="primary" 
         className="w-100" 
         disabled={isLoading}
       >

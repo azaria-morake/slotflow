@@ -1,7 +1,0 @@
-Hello Admin,
-
-{{ user.username }} has cancelled their booking for:
-Course: {{ course.title }}
-Date of Cancellation: {{ cancellation_date|date:"F j, Y" }}
-
-SlotFlow Notifications

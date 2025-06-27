@@ -142,7 +142,7 @@ const handleSubmitCourse = async (data) => {
           <h2>Admin Dashboard</h2>
         </Col>
         <Col className="text-end">
-          <Button variant="accent" onClick={handleCreateCourse}>
+          <Button variant="primary" onClick={handleCreateCourse}>
             Create New Course
           </Button>
         </Col>
